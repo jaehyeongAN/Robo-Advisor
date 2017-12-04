@@ -1,0 +1,54 @@
+﻿ProjectTemplate 수업내용
+
+- 수업내용 : Spring MVC + myBatis + AOP 적용 템플릿 Project  
+- 주요 keyword : <jee>, <tx>, <aop> 태그 이용 DB 연동, 파일 업로드
+   
+1. Spring Project -> Spring MVC Project(최상위 : spring.project.myproject)   
+ 
+2.pom.xml 추가(pom.txt 참고)     
+   1) <!-- db(dbcp방식,myBatis,oracle) 관련 추가 -->   
+   2) <!-- aspectJ 등 기타 추가 라이브러리 등록 --> 
+ 
+3. table 생성 : src/main/webapp/sql/test.sql  
+ 
+4. Controller -> Service -> Dao -> myBatis -> Table     
+  1) spring.project.vo.TestVO       
+  2) spring.project.controller.TestController(@Controller)       
+  3) spring.project.service.TestService       
+     spring.project.service.TestServiceImpl(@Service)    
+  4) spring.project.dao.TestDao       
+     spring.project.dao.TestDaoImpl(@Repository)       
+     test.xml(myBatis Mapper 설정파일)     
+
+5. web.xml(chap05_Spring_MVC : web.xml 참고)    
+   <filter> 태그 추가 - 한글 인코딩 방식    
+   <url-pattern>*.do</url-pattern>
+   
+6. servlet-context.xml 
+   <context:component-scan base-package="spring.project" /> 
+ 
+7. root-context.xml(roo-context.txt 참고)   
+ 
+8. mybatisConfig.xml(chap10_springMVC_myBatis : mybatisConfig.xml 참고)     
+ 
+9. webapp/index.jsp - 시작 파일 작성 
+ 
+10. resources 폴더 - css, js, images, include 작성    
+ 
+11. WEB-INF/views page 작성 
+ 
+12. index.jsp 실행 : Name [jdbc/orcl] is not bound 오류 발생 
+ 
+13. server.xml에서 <Resource> 태그  
+    <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="200" maxIdle="100" name="jdbc/orcl" password="tiger" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:orcl" username="scott"/>  
+
+    
+    
+==================================================================
+
+1. myBatis 로그출력 & 예외처리 (chap10 참고)
+
+2. aop 기반 트랜잭션 처리(참조 : 4. aop기반 트랜잭션 처리.txt)
+
+
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.vo.RecommVO">
+    <!-- table 속성와 bean 속성과의 매핑 -->
+	<resultMap id="RecommMap" type="spring.project.vo.RecommVO">
+		<result property="code" column="code" />
+		<result property="invest_tot" column="invest_tot" />
+		<result property="nowAge" column="nowAge" />
+		<result property="req_h" column="req_h" />
+		<result property="req_m" column="req_m" />
+		<result property="req_edu" column="req_edu" />
+		<result property="req_r" column="req_r" />
+		<result property="req_etc" column="req_etc" />
+		<result property="fo_h" column="fo_h" />
+		<result property="fo_m" column="fo_m" />
+		<result property="fo_edu" column="fo_edu" />
+		<result property="fo_r" column="fo_r" />
+		<result property="fo_etc" column="fo_etc" />
+	</resultMap>  
+	
+	<select id="selectOneRecomm" parameterType="String" resultMap="RecommMap">
+      select * from RECOMM_W where code=#{code}
+   </select>
+	
+	<select id="selectRecomm"  resultMap="RecommMap">
+		select * from RECOMM_W
+	</select>
+	
+   <insert id="insertRecomm" parameterType="Recomm">
+   		insert into RECOMM_W values(#{code}, #{invest_tot}, #{nowAge}, #{req_h}, #{req_m}, #{req_edu}, #{req_r}, #{req_etc}, #{fo_h}, #{fo_m}, #{fo_edu}, #{fo_r}, #{fo_etc})
+   </insert>
+      
+</mapper>
+
+
+
+
+
+
+

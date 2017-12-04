@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.vo.RetireVO">
+    <!-- table 속성와 bean 속성과의 매핑 -->
+	<resultMap id="RetireMap" type="spring.project.vo.RetireVO">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="regDate" column="regDate" />
+		<result property="retireYear" column="retireYear" />
+		<result property="nowAge" column="nowAge" />
+		<result property="deathAge" column="deathAge" />
+		<result property="requireMoney" column="requireMoney" />
+		<result property="savedMoney" column="savedMoney"/>
+		<result property="pension" column="pension"/>
+		<result property="saveMoney" column="saveMoney"/>
+		<result property="rate" column="rate"/>
+		<result property="addMoney2" column="addMoney2"/>
+		<result property="addMoney3" column="addMoney3"/>
+		<result property="retireAge" column="retireAge"/>
+		<result property="accMoney" column="accMoney"/>
+		<result property="requireTotal" column="requireTotal"/>
+		<result property="totalMoney" column="totalMoney"/>
+		<result property="lackMoney" column="lackMoney"/>
+		<result property="addMoney" column="addMoney"/>
+		
+		
+	</resultMap>  
+   
+   <select id="selectRetire" parameterType="String" resultMap="RetireMap">
+   	select * from retire where regDate = (select max(regDate) from retire)
+   </select>	
+
+   <insert id="insertRetire" parameterType="retire">
+   	insert into retire values(#{id}, sysdate, #{name},#{retireYear}, #{nowAge}, #{deathAge}, #{requireMoney}, #{savedMoney},#{pension},#{saveMoney},#{rate},#{retireAge},#{accMoney},#{requireTotal},#{totalMoney},#{lackMoney},#{addMoney},#{addMoney2},#{addMoney3})
+   </insert>
+   
+
+</mapper>
+
+

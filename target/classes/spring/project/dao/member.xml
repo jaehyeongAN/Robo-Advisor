@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.vo.MemberVO">
+    <!-- table 속성와 bean 속성과의 매핑 -->
+	<resultMap id="MemberMap" type="spring.project.vo.MemberVO">
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="name" column="name" />
+		<result property="gender" column="gender" />
+		<result property="address" column="address"/>
+		<result property="birthDate" column="birthDate"/>
+		<result property="phone" column="phone"/>
+		<result property="marriageCheck" column="marriageCheck"/>
+		<result property="income" column="income"/>
+		<result property="pay" column="pay"/>
+		<result property="myStyle" column="myStyle"/>
+	</resultMap>  
+	
+    <select id="selectMemberAll" resultMap="MemberMap">
+		select * from member   
+    </select>
+
+   <select id="selectOne" parameterType="String" resultMap="MemberMap">
+   		select * from member where id=#{id}
+   </select>
+   
+   <select id="loginCheck" parameterType="member" resultMap="MemberMap">
+   		select * from member where id=#{id} and pwd=#{pwd}
+   </select>
+   
+   <insert id="insertMember" parameterType="member">
+   		insert into member values(#{id}, #{pwd}, #{name}, #{gender}, #{address}, #{birthDate}, #{phone}, #{marriageCheck}, #{income}, #{pay}, #{myStyle})
+   </insert>
+   
+   <update id="updateMember" parameterType="member">
+    	update member set pwd=#{pwd}, name=#{name}, gender=#{gender}, address=#{address}, birthDate=#{birthDate}, phone=#{phone}, marriageCheck=#{marriageCheck}, income=#{income}, pay=#{pay}, myStyle=#{myStyle} where id=#{id}
+   </update>
+   
+   <update id="updateMemberpay" parameterType="member">
+    update member set pay=#{pay}, income=#{income} where id=#{id}
+   </update>
+   
+   <delete id="deleteMember" parameterType="String">
+  	delete from member where id=#{id}
+   </delete>
+   
+</mapper>
+
+
+
+
+
+
+

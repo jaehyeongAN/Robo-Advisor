@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias alias="member" type="spring.project.vo.MemberVO" />
+		<typeAlias alias="sf" type="spring.project.vo.SFVO" />
+		<typeAlias alias="money" type="spring.project.vo.MoneyVO" />
+		<typeAlias alias="Recomm" type="spring.project.vo.RecommVO" />
+		<typeAlias alias="board" type="spring.project.vo.BoardVO" />
+		<typeAlias alias="retire" type="spring.project.vo.RetireVO" />
+		<typeAlias alias="house" type="spring.project.vo.HouseVO" />
+		<typeAlias alias="money2" type="spring.project.vo.MoneyVO2" />
+		<!-- <typeAlias alias="xml" type="spring.parsing.xml.XmlVO" /> -->
+	</typeAliases>
+	<mappers>
+		<!-- 주의 : 경로 표시 -->
+		<mapper resource="spring/project/dao/member.xml" />
+		<mapper resource="spring/project/dao/money.xml" />
+		<mapper resource="spring/project/dao/SF.xml" />
+		<mapper resource="spring/project/dao/Recomm.xml" />
+		<mapper resource="spring/project/dao/board.xml" />
+		<mapper resource="spring/project/dao/retire.xml" />
+		<mapper resource="spring/project/dao/house.xml" />
+		<mapper resource="spring/project/dao/money2.xml" />
+		<!-- <mapper resource="spring/parsing/xml/XML.xml"/> -->
+	</mappers>
+</configuration>

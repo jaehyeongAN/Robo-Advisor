@@ -1,0 +1,24 @@
+package spring.project.dao;
+
+import spring.project.vo.MemberVO;
+import spring.project.vo.MoneyVO;
+import spring.project.vo.MoneyVO2;
+
+public interface FinnanceDao {
+
+	void insertmoney(MoneyVO vo); // 삽입
+
+	MoneyVO selectOne(String id);
+
+	void update(MoneyVO vo);
+
+	void delete(String id);
+
+	void updatepay(MemberVO vo);
+
+	MoneyVO selectResult(String id);
+
+	MoneyVO2 selectMoney2(String id);
+
+	void insertMoney2(MoneyVO2 vo);
+}

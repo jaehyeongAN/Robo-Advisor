@@ -1,0 +1,27 @@
+1. pom.xml에 라이브러리 추가 
+		<!-- cor.jar - MultipartRequest 추가 -->
+   		<dependency>
+      		<groupId>servlets.com</groupId>
+      		<artifactId>cos</artifactId>
+      		<version>05Nov2002</version>
+   		</dependency>
+
+2. resources/sql/fileUpload.sql 테이블 생성 
+3. resources/upload 폴더 생성
+4. mvc.file.controller
+   FileUploadController.java <- upload 경로 수정 
+5. mvc.file.model
+   FileUploadDAO.java <- jsp 방식 db 연동 
+   FileUploadDTO.java
+6.servlet-context.xml
+  <context:component-scan base-package="mvc.file" /> 등록
+7. view page 
+   resources/typeInput.jsp
+   fileUpload폴더 (파일 upload)
+
+
+
+
+
+
+

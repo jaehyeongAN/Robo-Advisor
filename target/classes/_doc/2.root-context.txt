@@ -1,0 +1,12 @@
+﻿	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/orcl" resource-ref="true"/>
+	<!-- resource-ref="true" : server.xml에서 resource 참조 -->
+	
+  	<!-- myBatis 환경설정 sqlSession 객체 생성 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+     <property name="dataSource" ref="dataSource" />
+     <property name="configLocation" value="/WEB-INF/spring/mybatisConfig.xml"/>     
+    </bean> 
+       
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+       <constructor-arg index="0" ref="sqlSessionFactory" />
+    </bean>			

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.vo.MoneyVO">
+    <!-- table 속성와 bean 속성과의 매핑 -->
+   <resultMap id="MoneyMap" type="spring.project.vo.MoneyVO">
+      <result property="id" column="id" />
+      <result property="age" column="age" />
+      <result property="fixedIncome" column="fixedIncome" />
+      <result property="flucIncome" column="flucIncome" />
+      <result property="sumIncome" column="sumIncome" />
+      <result property="fixedHome" column="fixedHome" />
+      <result property="fixedFood" column="fixedFood" />
+      <result property="fixedCommunication" column="fixedCommunication" />
+      <result property="fixedTrans" column="fixedTrans" />
+      <result property="fixedInsurance" column="fixedInsurance" />
+      <result property="fixedTax" column="fixedTax" />
+      <result property="fixedExpense" column="fixedExpense" />
+      <result property="flucLife" column="flucLife" />
+      <result property="flucBeauty" column="flucBeauty" />
+      <result property="flucLeisure" column="flucLeisure" />
+      <result property="flucMedical" column="flucMedical" />
+      <result property="flucEvent" column="flucEvent" />
+      <result property="flucEdu" column="flucEdu" />
+      <result property="flueEtc" column="flueEtc" />
+      <result property="flucExpense" column="flucExpense" />
+      <result property="sumExpense" column="sumExpense" />
+   </resultMap>  
+   
+
+   
+   <select id="selectMoney" parameterType="String" resultMap="MoneyMap">
+      select * from m_data where id=#{id}
+   </select>
+   
+   <insert id="insertMoney" parameterType="money">
+      insert into m_data values(#{id}, #{age}, #{fixedIncome}, #{flucIncome}, #{sumIncome}, #{fixedHome}, #{fixedFood}, #{fixedCommunication}, #{fixedTrans}, #{fixedInsurance}, #{fixedTax}, #{fixedExpense}, #{flucLife}, #{flucBeauty}, #{flucLeisure}, #{flucMedical}, #{flucEvent}, #{flucEdu}, #{flueEtc}, #{flucExpense}, #{sumExpense}, sysdate)
+   </insert>
+   
+   <update id="updateMoney" parameterType="money">
+      update m_data set age=#{age} fixedIncome=#{fixedIncome}, flucIncome=#{flucIncome}, sumIncome=#{sumIncome}, fixedHome=#{fixedHome}, fixedFood=#{fixedFood}, fixedCommunication=#{fixedCommunication}, fixedTrans=#{fixedTrans}, fixedInsurance=#{fixedInsurance}, fixedTax=#{fixedTax}, fixedExpense=#{fixedExpense}, flucLife=#{flucLife}, flucBeauty=#{flucBeauty}, flucLeisure=#{flucLeisure}, flucMedical=#{flucMedical}, flucEvent=#{flucEvent}, flucEdu=#{flucEdu}, flueEtc=#{flueEtc}, flucExpense=#{flucExpense}, sumExpense=#{sumExpense}, reg_date=sysdate where id=#{id}
+   </update>
+   
+   <delete id="deleteMoney" parameterType="String">
+      delete from m_data where id=#{id}
+   </delete>
+   
+   <select id="finnanceResult" parameterType="String" resultMap="MoneyMap">
+      select * from m_data where reg_date = (select max(reg_date) from m_data)
+   </select>
+
+</mapper>

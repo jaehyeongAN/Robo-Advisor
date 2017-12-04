@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.vo.MoneyVO2">
+    <!-- table 속성와 bean 속성과의 매핑 -->
+   <resultMap id="Money2Map" type="spring.project.vo.MoneyVO2">
+      <result property="id" column="id" />
+      <result property="money" column="money" />
+      <result property="mmf" column="mmf" />
+      <result property="ordinaryDeposits" column="ordinaryDeposits" />
+      <result property="savingsDeposits" column="savingsDeposits" />
+      <result property="fixedDeposit" column="fixedDeposit" />
+      <result property="bondFund" column="bondFund" />
+      <result property="stockFund" column="stockFund" />
+      <result property="realEstate" column="realEstate" />
+      <result property="realEstateFund" column="realEstateFund" />
+      <result property="apartmentApplication" column="apartmentApplication" />
+      <result property="personalAnnuitySavings" column="personalAnnuitySavings" />
+      <result property="insurance" column="insurance" />
+      <result property="variableAnnuities" column="variableAnnuities" />
+      <result property="variableUniversalInsurance" column="variableUniversalInsurance" />
+      <result property="reg_date" column="reg_date" />
+   </resultMap>  
+   
+
+   
+<!--    <select id="selectMoney2" parameterType="String" resultMap="Money2Map">
+      select * from m_data2 where id=#{id}
+   </select> -->
+   
+   <insert id="insertMoney2" parameterType="money2">
+      insert into m_data2 values(#{id}, #{money},#{mmf},#{ordinaryDeposits},#{savingsDeposits},#{fixedDeposit},#{bondFund},#{stockFund},#{realEstate},#{realEstateFund},#{apartmentApplication},#{personalAnnuitySavings},#{insurance},#{variableAnnuities},#{variableUniversalInsurance}, sysdate)
+   </insert>
+   
+<!--    <update id="updateMoney2" parameterType="money2">
+      update m_data set age=#{age} fixedIncome=#{fixedIncome}, flucIncome=#{flucIncome}, sumIncome=#{sumIncome}, fixedHome=#{fixedHome}, fixedFood=#{fixedFood}, fixedCommunication=#{fixedCommunication}, fixedTrans=#{fixedTrans}, fixedInsurance=#{fixedInsurance}, fixedTax=#{fixedTax}, fixedExpense=#{fixedExpense}, flucLife=#{flucLife}, flucBeauty=#{flucBeauty}, flucLeisure=#{flucLeisure}, flucMedical=#{flucMedical}, flucEvent=#{flucEvent}, flucEdu=#{flucEdu}, flueEtc=#{flueEtc}, flucExpense=#{flucExpense}, sumExpense=#{sumExpense}, reg_date=sysdate where id=#{id}
+   </update> -->
+   
+<!--    <delete id="deleteMoney" parameterType="String">
+      delete from m_data where id=#{id}
+   </delete> -->
+   
+   <select id="selectMoney2" parameterType="String" resultMap="Money2Map">
+      select * from m_data2 where reg_date = (select max(reg_date) from m_data2)
+   </select>
+
+</mapper>

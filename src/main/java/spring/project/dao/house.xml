@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.vo.HouseVO">
+	<!-- table 속성와 bean 속성과의 매핑 -->
+	<resultMap id="HouseMap" type="spring.project.vo.HouseVO">
+		<result property="id" column="id" />
+		<result property="regdate" column="regdate" />
+		<result property="name" column="name" />
+		<result property="rpay_type_nm" column="rpay_type_nm" />
+		<result property="lend_rate_type_nm" column="lend_rate_type_nm" />
+		<result property="enterYear" column="enterYear" />
+		<result property="requireMoney" column="requireMoney" />
+		<result property="saveMoney" column="saveMoney" />
+		<result property="savedMoney" column="savedMoney" />
+		<result property="rate" column="rate" />
+		<result property="accMoney" column="accMoney" />
+		<result property="totalMoney" column="totalMoney" />
+		<result property="lackMoney" column="lackMoney" />
+		<result property="yearSave" column="yearSave" />
+		<result property="monthSave" column="monthSave" />
+		<result property="addMoney" column="addMoney" />
+		<result property="addMoney2" column="addMoney2" />
+		<result property="addMoney3" column="addMoney3" />
+	</resultMap>
+
+
+
+	<select id="selectHouse" parameterType="String" resultMap="HouseMap">
+		select * from house where id=#{id}
+	</select>
+
+	<insert id="insertHouse" parameterType="house">
+		insert into house
+		values(#{id}, SYSDATE,#{enterYear}, #{requireMoney},
+		#{saveMoney},
+		#{savedMoney}, #{rate}, #{accMoney}, #{totalMoney},
+		#{lackMoney},
+		#{yearSave}, #{monthSave}, #{addMoney}, #{addMoney2},
+		#{addMoney3},#{rpay_type_nm},#{lend_rate_type_nm},#{name})
+	</insert>
+
+	<select id="selectHouseOne" resultMap="HouseMap">
+		select * from house where REGDATE =
+		(select max(REGDATE) from house)
+	</select>
+
+
+
+</mapper>

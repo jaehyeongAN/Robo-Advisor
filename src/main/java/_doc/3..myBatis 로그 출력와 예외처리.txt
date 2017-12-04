@@ -1,0 +1,78 @@
+﻿##########################
+## myBatis 로그 출력하기
+##########################
+
+1. pom.xml에 라이브러리 추가
+
+<!-- jdbc log -->
+<dependency>
+    <groupId>org.lazyluke</groupId>
+    <artifactId>log4jdbc-remix</artifactId>
+    <version>0.2.7</version>
+</dependency>
+※ Maven Dependencies에서 log4jdbc-remix-0.2.7.jar 추가 확인
+
+2. root-context.xml에 설정 추가
+<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+ <constructor-arg ref="dataSourceSpied" />
+ <property name="logFormatter">
+  <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+   <property name="loggingType" value="MULTI_LINE" />
+   <property name="sqlPrefix" value="SQL:::" />
+  </bean>
+ </property>
+</bean>
+※ dataSource 를 dataSourceSpied 로 변경하고 위 소스를 추가하면 
+
+3. scr/main/resources/log4j.xml
+<!-- Appenders 태그를 제외한 나머지 태그 주석처리 -->
+<!--아래 태그 붙여넣기 -->
+
+<logger name="jdbc.connection" additivity="false">
+    <level value="WARN"/>
+    <appender-ref ref="console"/>
+</logger>
+
+<logger name="jdbc.audit" additivity="false">
+    <level value="WARN"/>
+    <appender-ref ref="console"/>
+</logger>
+
+<logger name="jdbc.sqlonly" additivity="false">
+    <level value="WARN"/>
+    <appender-ref ref="console"/>
+</logger>
+
+<logger name="jdbc.sqltiming" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="console"/>
+</logger>
+
+<logger name="jdbc.resultset" additivity="false">
+    <level value="WARN"/>
+    <appender-ref ref="console"/>
+</logger>
+
+<logger name="jdbc.resultsettable" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="console"/>
+</logger>
+
+########################################
+## DB 연결이나 예기치 않은 상태 발생 시 예외처리
+########################################
+
+1. servlet-context.xml
+ <!-- exception 설정( 예: primary key 중복 - 무결성제약조건 위배) -->
+    <beans:bean
+      class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <beans:property name="exceptionMappings">
+            <beans:props>
+                <beans:prop key="java.lang.Exception">err/exception</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
+
+2. views/exception.jsp 작성
+
+3. 중복 id로 레코드 삽입 -> 예외처리 페이지 출력

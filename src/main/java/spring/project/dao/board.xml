@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.vo.BoardVO">
+    <!-- table 속성와 bean 속성과의 매핑 -->
+	<resultMap id="BoardMap" type="spring.project.vo.BoardVO">
+		<result property="board_no" column="board_no" />
+		<result property="board_name" column="board_name" />
+		<result property="board_title" column="board_title" />
+		<result property="board_cont" column="board_cont" />
+		<result property="board_pwd" column="board_pwd"/>
+		<result property="board_regdate" column="board_regdate"/>
+	</resultMap>  
+	
+    <select id="boardList" resultMap="BoardMap">
+		select * from board   
+    </select>
+
+   <select id="selectBoard" parameterType="integer" resultMap="BoardMap">
+   	select * from board where board_no=#{board_no}
+   </select>
+   
+   <!-- <select id="findBoard" resultMap="BoardMap">
+   	select * from board
+   		<where>
+          <if test='find_field=="board_title"'>
+             board_title like #{find_name} order by board_title desc           
+          </if> 
+          <if test='find_field=="board_cont"'>
+             AND board_cont like #{find_name}# order by board_cont desc 
+          </if>       
+        </where>
+   </select> -->
+   
+   <insert id="insertBoard" parameterType="board">
+   	insert into board values(board_seq.nextval, #{board_name}, #{board_title}, #{board_cont}, #{board_pwd}, sysdate)
+   </insert>
+   
+   <update id="updateBoard" parameterType="board">
+    update board set board_name=#{board_name}, board_title=#{board_title}, board_cont=#{board_cont}, board_pwd=#{board_pwd} where board_no=#{board_no}
+   </update>
+   
+   <delete id="deleteBoard" parameterType="integer">
+  	delete from board where board_no=#{board_no}
+   </delete>
+   
+</mapper>
+
+
+

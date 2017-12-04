@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.project.vo">
+    <!-- table 속성와 bean 속성과의 매핑 -->
+	<resultMap id="SFMap" type="spring.project.vo.SFVO">
+		<result property="code" column="code" />
+		<result property="id" column="id" />
+		<result property="nowAge" column="nowAge" />
+		<result property="name" column="name" />
+		<result property="gender" column="gender" />
+		<result property="invest_tot" column="invest_tot" />
+		<result property="r_date" column="r_date" />
+		<result property="f_type" column="f_type" />
+		<result property="f_select" column="f_select" />
+		<result property="goalMoney" column="goalMoney" />
+		<result property="goalTime" column="goalTime" />
+		<result property="savedMoney" column="savedMoney" />
+		<result property="positiveMoney" column="positiveMoney" />
+		<result property="requireTime" column="requireTime" />
+		<result property="shortageMoney" column="shortageMoney" />
+		<result property="surplusMoney" column="surplusMoney" />
+		<result property="requireMoney_m" column="requireMoney_m" />
+		<result property="home_select" column="home_select" />
+		<result property="home_region" column="home_region" />
+		<result property="home_type" column="home_type" />
+		<result property="home_m" column="home_m" />
+		<result property="edu_n" column="edu_n" />
+		<result property="edu_1" column="edu_1" />
+		<result property="edu_2" column="edu_2" />
+		<result property="retire_p" column="retire_p" />
+		<result property="retire_pay" column="retire_pay" />
+		<result property="retire_g" column="retire_g" />
+		<result property="etc_goal" column="etc_goal" />
+	</resultMap>  
+	
+	<insert id="sf_insert" parameterType="sf">
+		insert into finnance_table values(#{code}, #{id}, #{nowAge}, #{name}, #{gender}, #{invest_tot}, SYSDATE, 
+		#{f_type}, #{f_select}, #{goalMoney}, #{goalTime}, #{savedMoney}, #{positiveMoney}, #{requireTime}, #{shortageMoney}, #{surplusMoney}, #{requireMoney_m}, 
+		#{home_select}, #{home_region}, #{home_type}, #{home_m}, 
+		#{edu_n}, #{edu_1}, #{edu_2}, #{retire_p}, #{retire_pay}, #{retire_g}, '목돈만들기')
+	</insert>
+	
+	<select id="sf_select_Result" resultMap="SFMap" parameterType="String" >
+		select * from finnance_table where code = #{code} order by f_type
+    </select>
+   
+   <update id="sf_update" parameterType="sf">
+   		update finnance_table set positiveMoney=#{positiveMoney}, requireTime=#{requireTime},
+   		shortageMoney=#{shortageMoney}, surplusMoney=#{surplusMoney}, requireMoney_m=#{requireMoney_m} 
+   		where code=#{code} and f_type=#{f_type}
+   </update>
+
+
+	<select id="sfvoResult" resultMap="SFMap" parameterType="String">
+		select * from finnance_table where r_date = (select max(r_date) from
+		finnance_table)
+	</select>
+
+
+	<select id="sfvoResultList" resultMap="SFMap" parameterType="String">
+		select * from finnance_table where id = #{id} and f_type = 0 order by r_date asc
+	</select>
+   
+   
+</mapper>
+
+
+
+
+
+
+
