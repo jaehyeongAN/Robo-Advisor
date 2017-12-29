@@ -4,7 +4,7 @@ Machine-Learning based robo-advisor
 [Spring framework / Java+Jsp+Mybatis / Oracle 11g / R serve]
 <br><br>
 
-<div style="font: bold; color:green">-- Main page --</div> 
+-- Main page --
 ![main page](./capture_image/main.png)
 <br><br><br>
 
