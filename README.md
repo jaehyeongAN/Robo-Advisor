@@ -1,7 +1,16 @@
 # Robo-Advisor
 Machine-Learning based robo-advisor
 <br>
-[Spring framework / Java+Jsp+Mybatis / Oracle 11g / R serve]
+- Spring framework 
+- Java+Jsp+Mybatis 
+- Oracle 11g 
+- R serve
+
+## Functions
+- Financial planning
+- Forcast House Price
+- Financial Products Recommendation
+
 <br><br>
 
 ### Main page
