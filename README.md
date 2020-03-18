@@ -15,18 +15,18 @@ Machine-Learning based robo-advisor
 
 ## 1. Main page
 <img src="./capture_image/main_page.jpg">
-<br><br><br>
-
+<br>
 
 ## 2. Retirement fund design
 <img src="./capture_image/은퇴자금설계1.png">
 <img src="./capture_image/은퇴자금설계2.png">
-
+<br>
 
 ## 3. Residential fund design
 <img src="./capture_image/주거자금설계1.png">
 <img src="./capture_image/주거자금설계2.png">
 <img src="./capture_image/주거자금설계3.jpg">
+<br>
 
 ## 4. Result of Financial planning
 <img src="./capture_image/재무설계1.png">
