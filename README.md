@@ -6,25 +6,32 @@ Machine-Learning based robo-advisor
 - Oracle 11g 
 - R serve
 
-## Functions
+## Main Functions
 - Financial planning
-- Forcast House Price
-- Financial Products Recommendation
+- House-Price Prediction by Arima and Forcast in R
+- Financial-Products Recommendation by UBCF(User-based Collaborative Filtering) in R
 
 <br><br>
 
-### Main page
-![main page](./capture_image/main.png)
+## 1. Main page
+<img src="./capture_image/main.png">
 <br><br><br>
 
-### Finance consulting page
-![consulting_page](./capture_image/house_finance.png)
-<br><br><br>
 
-### Time Series page
-![ts_page](./capture_image/house_timseries.png)
-<br><br><br>
+## 2. Consumption pattern analysis
+<img src="./capture_image/소비습관1.png">
+<img src="./capture_image/소비습관2.png">
+<img src="./capture_image/소비습관3.png">
+<img src="./capture_image/소비습관4.png">
 
-### Financial product recommendation page
-![recomm page](./capture_image/house_recomm.png)
 
+## 3. Retirement fund design
+<img src="./capture_image/은퇴자금설계1.png">
+<img src="./capture_image/은퇴자금설계2.png">
+
+
+## 4. Residential fund design
+<img src="./capture_image/주거자금설계1.png">
+<img src="./capture_image/주거자금설계2.png">
+<img src="./capture_image/주거자금설계3.png">
+<img src="./capture_image/주거자금설계4.png">
